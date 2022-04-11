@@ -14,12 +14,9 @@
 #include <string>
 #include <ctype.h> 
 #include "lista.h"
-
-
+#include <locale.h>
 #include <stdio.h>
 #include <string.h>
-
-
 #include <string.h>
 
 using namespace std;
@@ -27,6 +24,7 @@ using namespace std;
 tLista * lista1;
 
 int main(int argc, char** argv) {
+  setlocale(LC_ALL, "Portuguese");
     /*Variável para guardar o valor da opção a ser requisitada*/
     int opcao;
             
@@ -85,7 +83,7 @@ int main(int argc, char** argv) {
         dados1.close();
     }
     else{
-        cout << "Arquivo não encontrado."<<endl;
+        cout << "Arquivo não disponível."<<endl;
     }
     
     if(arquivo == 1){
@@ -104,6 +102,8 @@ int main(int argc, char** argv) {
             cout << endl;
             cout << " Digite o numero da opção desejada: ";
             cin >> opcao;
+
+            system("clear||cls"); //Limpar a tela (Funciona tanto em linux ou windows
 
             /*Caso o usuario digitar algum número que esta fora das 
             opções exibe a seguinte mensagem:*/
@@ -181,7 +181,7 @@ int main(int argc, char** argv) {
                     cout << endl;
                 }
 
-
+              system("clear||cls"); //Limpar a tela (Funciona tanto em linux ou windows
             }
 
             /* 2 - Remover */
@@ -242,14 +242,11 @@ int main(int argc, char** argv) {
                 else{ /* 2 - ÁRVORE AVL*/
                     cout <<endl;
                     cout << " Exemplo: Se deseja buscar por carros da cor Branco a câmbio Automático digite: 'Branco' no primeiro critério e 'Automático' no segundo critério" << endl;
-                    cout << " Digite o primeiro elemento de busca desejada: ";
-                    cout << " EX: Se deseja buscar por carros Flex digite: Flex ";
+                    cout << " Digite o primeiro critério de busca desejada: ";
                     cin >> elemento1;
-                    
                     cout << endl;
                     
-                    cout << " Digite o segundo elemento de busca desejada: ";
-                    cout << " EX: Se deseja buscar por carros de câmbio Automático digite: Automático " << endl;
+                    cout << " Digite o segundo critério de busca desejada: ";
                     cin >> elemento2;
                     
                     /*Chamando a função busca*/
@@ -257,7 +254,7 @@ int main(int argc, char** argv) {
                     existeAVL = 1;
                 }
                 cout << endl;
-                cout << "  [   Busca Concluída com Sucesso!   ]" << endl;
+                cout << "  \t[\t\t  Busca realizada!\t\t]" << endl;
                 cout << endl;
             }
 
@@ -273,7 +270,8 @@ int main(int argc, char** argv) {
                 }
                 if (existeArv == 1){
                     cout << endl;
-                    cout << "  |                   ÁRVORE BINÁRIA:                    |"<< endl;    
+                    cout << "                     [ Árvore Binário: ]                     "<< endl;
+                    cout << endl;
                     imprime_arvore(Binaria);
                     cout<<endl;
                    
@@ -281,7 +279,8 @@ int main(int argc, char** argv) {
                 cout << endl;
                 if (existeAVL== 1){
                     cout << endl;
-                    cout << "  |                     ÁRVORE AVL:                      |"<< endl;
+                    cout << "                      [ Árvore AVL: ]                      "<< endl;
+                    cout << endl;
                     imprime_arvore(AVL);
                     cout<<endl;
                 }

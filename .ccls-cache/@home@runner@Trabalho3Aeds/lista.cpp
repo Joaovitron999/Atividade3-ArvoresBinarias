@@ -283,7 +283,8 @@ bool procura (string busca, no * pont){
 
 /*Função para imprimir a árvore em pré Ordem*/
 void preOrdem(Tree * raiz){
-    cout << "  |" "Placa correspondente -> ""[" << raiz->info->placa<< "],";
+    cout << "\t|  Placa...: ""[" << raiz->info->placa<< "]";
+    cout << "\t|  Modelo..: ""[" << raiz->info->placa<< "]" "\t|   " << endl;
     if(raiz->esquerdo != NULL){  //Diferente
         preOrdem(raiz->esquerdo);
     }
@@ -297,12 +298,12 @@ void imprime_arvore(Tree * raiz){
     if(arvore_vazia(raiz)){
         
         cout << endl;
-        cout << "  [     Não existe nenhum veículo correspondente       ]"<< endl;
-        cout << "  [        com as características desejadas            ]"<< endl;
+        cout << "  [      Veículo não encontrado      ]"<< endl;
         cout << endl;        
     } else {
         raiz->altura = altura_binaria(raiz); 
-        cout << "  |  Altura da árvore --> "<< raiz->altura << "                      ]" << endl;   
+        cout << "\t\t|\t\t    Altura da árvore --> "<< raiz->altura << "       |" << endl;
+        cout << endl;
         preOrdem(raiz);
         cout << endl;    
       }
