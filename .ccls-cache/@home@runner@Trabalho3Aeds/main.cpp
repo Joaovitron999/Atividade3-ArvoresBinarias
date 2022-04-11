@@ -205,7 +205,7 @@ int main(int argc, char** argv) {
                 cout << endl;
                 cout << "  [        Qual tipo de árvore usar?     ]" << endl;
                 cout << endl;
-                cout << "  |          1) Árvore binária           |" << endl;
+                cout << "  |          1) Árvore Binária           |" << endl;
                 cout << "  |          2) Árvore AVL               |" << endl;
                 cout << endl;
                 cout << " Digite a opção de armazenamento desejada: ";
@@ -284,16 +284,9 @@ int main(int argc, char** argv) {
                     imprime_arvore(AVL);
                     cout<<endl;
                 }
-                
             }
-
-        }while (opcao != 0);
+        } while (opcao != 0);
     }
-              
-
-
+            
     return 0;
 }
-
-
-
