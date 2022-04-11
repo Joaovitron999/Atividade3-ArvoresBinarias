@@ -302,7 +302,7 @@ void imprime_arvore(Tree * raiz){
         cout << endl;        
     } else {
         raiz->altura = altura_binaria(raiz); 
-        cout << "  [  Altura da árvore --> "<< raiz->altura << "                      |" << endl;   
+        cout << "  |  Altura da árvore --> "<< raiz->altura << "                      ]" << endl;   
         preOrdem(raiz);
         cout << endl;    
       }
