@@ -3,15 +3,7 @@
 
 using namespace std;
 
-/*Estrutura para guardar as informações dos veículos*/
-typedef struct no_ {
-        string modelo, marca, tipo, combustivel ,cambio, direcao, cor, placa; 
-        string ano, km, portas; 
-        string potenciaMotor;
-	struct no_ * prox;  // ponteiro para o próximo nó da lista encadeada
-} no;
-
-/*Estrutura de cabeçalho da Lista*/
+//Estrutura da Lista
 typedef struct {
 	int tam;              //Variável para medir a quantidade de elementos
 	struct no_ * inicio; // Ponteiro para o primeiro nó da lista encadeada
@@ -23,6 +15,15 @@ typedef struct tree{
     struct tree *esquerdo, *direito; //Ponteiro para o próximo elemento a esquerda/direita
     int altura;                     //Variável para medir a altura da árvore
 } Tree;
+
+// Estrutura para guardar as informações dos veículos
+typedef struct no_ {
+        string modelo, marca, tipo, combustivel ,cambio, direcao, cor, placa; 
+        string ano, km, portas; 
+        string potenciaMotor;
+	struct no_ * prox;  // Ponteiro do próximo nó da lista encadeada
+} no;
+
 
 bool arvore_vazia(Tree * raiz);
 void inserir_binario(Tree** raiz, no * novo);
@@ -51,5 +52,5 @@ no * remover_lista(string busca1, tLista * lista1);
 int altura_binaria(Tree * raiz);
 
 
-#endif /* LISTA_H */
+#endif // lista.h
 
