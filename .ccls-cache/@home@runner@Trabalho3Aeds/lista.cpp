@@ -4,12 +4,12 @@
 
 using namespace std;
 
-/*Função para descobrir a maior altura*/
+//Função que descobre a maior altura
 int maior_altura(int a, int b){
     return (a > b)? a: b;
 }
 
-/*Função que retorna a altura do nó caso ele seja nulo retorna -1*/
+//caso a altura do nó seja nulo, retorna -1
 int altura_no(Tree * tmp){
     if(tmp == NULL){
         return -1;

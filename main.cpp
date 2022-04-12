@@ -26,30 +26,32 @@ tLista * lista1;
 int main(int argc, char** argv) {
   setlocale(LC_ALL, "Portuguese");
     // Variável que guarda o valor da resposta do usuário
-    int opcao;
+    int opcao = 0;
+    int opcao2 = 0;
   
     // Variável para saber as opções dos primeiros parâmetros de busca dos veículos. Também irá ser usada para saber a placa do veículo que o usuário deseja remover.
     string elemento1, elemento2;
     
-     // Variável que confirma se já foi feita uma busca. Se resultar =0 significa que a Arvore está vazia, logo nenhum dado de busca foi armazenado nesses lugares, caso seja =1 significa que precisamos deletar o conteúdo que está na Arvore
-    int existeArv = 0, existeAVL = 0;
+     // Variável que confirma se já foi feita uma busca. Se resultar =0 significa que a Arvore está vazia, logo nenhum dado de busca foi armazenado nesses lugares, caso seja = 1 significa que precisamos deletar o conteúdo que está na Arvore
+    bool existeArv = false, existeAVL = false;
     
-    //Variável que  se o arquivo existe ou não
-    int arquivo = 0;
+    // Variável que identifica se o arquivo existe
+    bool arquivo = false;
     
-    /*Variável que irá receber o nome do arquivo a ser lido*/
+    // Variável que nomeia o arquivo após ser lido
     string nomearq;
     
-    /*Variáveis para a operação de busca*/
+    // Variáveis de busca
     Tree * Binaria = NULL;
     Tree *AVL = NULL;
-    
+
+    // Procura o arquivo com o nome correspondente
     nomearq = "BD_veiculos.txt";
     
-    /*Obtendo as informações do Arquivo*/
+    // Aqui se obtém as informações do arquivo
     ifstream dados1 (nomearq);
     if (dados1.is_open()){
-        /*Inicialização da Lista*/
+        // Início da lista
         lista1 = inicia_lista();
       string word;
         for(int i = 0; i < 13; i++){
@@ -98,31 +100,30 @@ int main(int argc, char** argv) {
             cout << " Digite o numero da opção desejada: ";
             cin >> opcao;
 
-            system("clear||cls"); //Limpar a tela (Funciona tanto em linux ou windows
+            system("clear||cls"); // Limpar a tela (Funciona tanto em linux ou windows
 
-            /*Caso o usuario digitar algum número que esta fora das 
-            opções exibe a seguinte mensagem:*/
+            // Caso o valor digitado não esteja de acordo com as opções, a seguinte mensagem será exibida:
             while ( opcao < 0 || opcao > 5){
-                cout << " Valor inválido tente novamente" << endl;
+                cout << " Valor inválido, digite novamente " << endl;
                 cin >> opcao;
             }
 
-            /*Caso digitar ZERO o programa ira ser fechado */ 
+            // Se digitar 0 o programa será fechado 
             if ( opcao == 0){
-                /*Removendo as Árvores*/
-                if (existeArv == 1 ){ //Remove a árvore binária caso exista
+                // Remoção das árvores
+                if (existeArv){ // Remove a árvore binária caso exista
                     libera_arvore(Binaria);
-                    existeArv = 0;
+                    existeArv = false;
                 }
-                if (existeAVL == 1){//Remove a árvore AVL caso exista
+                if (existeAVL){// Remove a árvore AVL caso exista
                     libera_arvore(AVL);
-                    existeAVL = 0;
+                    existeAVL = false;
                 }
-                /*Removendo a Lista*/
+                // Remove a lista
                 lista1 = encerra_lista(lista1);
             }
 
-            /* 1 - Inserir */
+            // 1 - Inserir
             if(opcao == 1){
                 no * novo = new no();
                 cout << endl;
@@ -179,7 +180,7 @@ int main(int argc, char** argv) {
               system("clear||cls"); //Limpar a tela (Funciona tanto em linux ou windows
             }
 
-            /* 2 - Remover */
+            // 2 - Remover 
             if(opcao == 2){
                 cout << " Digite a placa do veículo que deseja remover: ";
                 cin >> elemento1;
@@ -195,7 +196,7 @@ int main(int argc, char** argv) {
                 }
             }
 
-            /* 3 - Buscar */
+            // 3 - Buscar 
             if(opcao == 3){
                 cout << endl;
                 cout << "\t[     Qual tipo de árvore usar?     ]" << endl;
@@ -204,22 +205,21 @@ int main(int argc, char** argv) {
                 cout << "  |          2) Árvore AVL               |" << endl;
                 cout << endl;
                 cout << " Digite a opção de armazenamento desejada: ";
-                cin >> opcao;
-                if (opcao <= 0 || opcao > 2){
-                    break;
-                }
-                /*Desalocando a ÁRVORE BINÁRIA para realização de nova busca*/
-                if (existeArv == 1){
+                cin >> opcao2;
+                if (opcao2 > 0 && opcao2 <= 2){
+                   
+                //Tira a ÁRVORE BINÁRIA para realizar uma nova busca
+                if (existeArv){
                     libera_arvore(Binaria);
-                    existeArv = 0;
+                    existeArv = false;
                 }
-                /*Desalocando a ÁRVORE AVL para realização de nova busca*/
-                if (existeAVL== 1){
+                //Tira a ÁRVORE AVL para realizar uma nova busca
+                if (existeAVL){
                     libera_arvore(AVL);
-                    existeAVL = 0;
+                    existeAVL = false;
                 }
-                /* 1 - ÁRVORE BINÁRIA  */
-                if (opcao == 1){              
+                // 1 - ÁRVORE BINÁRIA
+                if (opcao2 == 1){              
                     cout <<endl;
                     cout << " Exemplo: Se deseja buscar por carros da cor Preto a câmbio Manual digite: 'Preto' no primeiro critério e 'Manual' no segundo critério" << endl;
                     cout <<endl;
@@ -229,11 +229,11 @@ int main(int argc, char** argv) {
                     cout << " Digite o SEGUNDO critério de busca desejada: ";
                     cin >> elemento2;
                     
-                    /*Chamando a função busca*/
+                    //Chama a função de busca
                     Binaria = busca (lista1, elemento1, elemento2, opcao);
-                    existeArv = 1;
+                    existeArv = true;
                 }
-                else{ /* 2 - ÁRVORE AVL*/
+                else if(opcao2 == 2) { // 2 - ÁRVORE AVL
                     cout <<endl;
                     cout << " Exemplo: Se deseja buscar por carros da cor Branco a câmbio Automático digite: 'Branco' no primeiro critério e 'Automático' no segundo critério" << endl;
                     cout << " Digite o primeiro critério de busca desejada: ";
@@ -243,26 +243,26 @@ int main(int argc, char** argv) {
                     cout << " Digite o segundo critério de busca desejada: ";
                     cin >> elemento2;
                     
-                    /*Chamando a função busca*/
+                    //Chama a função de busca
                     AVL = busca (lista1, elemento1, elemento2, opcao);
-                    existeAVL = 1;
+                    existeAVL = true;
                 }
                 cout << endl;
                 cout << "  \t[\t\t  Busca realizada!\t\t]" << endl;
                 cout << endl;
+                }
             }
-
-            /* 4 - Relatório */
+            // 4 - Relatório
             if(opcao == 4){
                 cout << endl;
                 relatorio(lista1);
             }
             if(opcao == 5){
                 cout<<endl;
-                if(existeArv == 0 && existeAVL == 0){
+                if(!existeArv && !existeAVL){
                     cout << "  [   Nenhuma árvore foi utilizada   ]" << endl;
                 }
-                if (existeArv == 1){
+                if (existeArv){
                     cout << endl;
                     cout << "                     [ Árvore Binário: ]                     "<< endl;
                     cout << endl;
@@ -271,7 +271,7 @@ int main(int argc, char** argv) {
                    
                 }
                 cout << endl;
-                if (existeAVL== 1){
+                if (existeAVL){
                     cout << endl;
                     cout << "                      [ Árvore AVL: ]                      "<< endl;
                     cout << endl;
