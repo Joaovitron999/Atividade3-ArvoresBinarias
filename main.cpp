@@ -160,7 +160,7 @@ int main(int argc, char** argv) {
                 cout << " Digite a direção: ";
                 cin >> novo->direcao;
 
-                cout << " Digite a cor: " << endl;
+                cout << " Digite a cor: ";
                 cin >> novo->cor;
 
                 cout << " Digite a quantidade de portas: ";
@@ -203,16 +203,15 @@ int main(int argc, char** argv) {
             /* 3 - Buscar */
             if(opcao == 3){
                 cout << endl;
-                cout << "  [        Qual tipo de árvore usar?     ]" << endl;
+                cout << "\t[     Qual tipo de árvore usar?     ]" << endl;
                 cout << endl;
                 cout << "  |          1) Árvore Binária           |" << endl;
                 cout << "  |          2) Árvore AVL               |" << endl;
                 cout << endl;
                 cout << " Digite a opção de armazenamento desejada: ";
                 cin >> opcao;
-                while ( opcao <= 0 || opcao > 2){
-                    cout << " Digite um número válido! ";
-                    cin >> opcao;
+                while (opcao <= 0 || opcao > 2){
+                    break;
                 }
                 /*Desalocando a ÁRVORE BINÁRIA para realização de nova busca*/
                 if (existeArv == 1){
@@ -287,6 +286,5 @@ int main(int argc, char** argv) {
             }
         } while (opcao != 0);
     }
-            
     return 0;
 }

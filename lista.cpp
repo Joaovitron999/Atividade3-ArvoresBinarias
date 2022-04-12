@@ -6,28 +6,6 @@
 using namespace std;
 
 
-/*Função para inserir em uma árvore binária*/
-void inserir_binario(Tree** raiz, no * novo){
-    if (*raiz == NULL){
-        *raiz = new(Tree); /* Aloca memória para a estrutura */
-        (*raiz)->esquerdo = NULL; /* Subárvore à esquerda é NULL */
-        (*raiz)->direito = NULL; /* Subárvore à direita é NULL */
-        (*raiz)->info = novo; /* Armazena a informação */
-    }else{
-        no * aux = (*raiz)->info;
-        /* Se o número for menor então vai pra esquerda */
-        if(novo->placa < aux->placa){
-          /* Percorre pela subárvore à esquerda */
-          inserir_binario(&(*raiz)->esquerdo, novo);
-        }
-        /* Se o número for maior então vai pra direita */
-        if(novo->placa > aux->placa){
-          /* Percorre pela subárvore à direita */
-          inserir_binario(&(*raiz)->direito, novo);
-        }
-    }
-}
-
 /*Função para descobrir a maior altura*/
 int maior_altura(int a, int b){
     return (a > b)? a: b;
@@ -48,6 +26,28 @@ int fator_balanceamento(Tree * tmp){
         return(altura_no(tmp->esquerdo) - altura_no(tmp->direito));
     }else{
         return 0;
+    }
+}
+
+/*Função para inserir em uma árvore binária*/
+void inserir_binario(Tree** raiz, no * novo){
+    if (*raiz == NULL){
+        *raiz = new(Tree); /* Aloca memória para a estrutura */
+        (*raiz)->esquerdo = NULL; /* Subárvore à esquerda é NULL */
+        (*raiz)->direito = NULL; /* Subárvore à direita é NULL */
+        (*raiz)->info = novo; /* Armazena a informação */
+    }else{
+        no * aux = (*raiz)->info;
+        /* Se o número for menor então vai pra esquerda */
+        if(novo->placa < aux->placa){
+          /* Percorre pela subárvore à esquerda */
+          inserir_binario(&(*raiz)->esquerdo, novo);
+        }
+        /* Se o número for maior então vai pra direita */
+        if(novo->placa > aux->placa){
+          /* Percorre pela subárvore à direita */
+          inserir_binario(&(*raiz)->direito, novo);
+        }
     }
 }
 
@@ -284,7 +284,7 @@ bool procura (string busca, no * pont){
 /*Função para imprimir a árvore em pré Ordem*/
 void preOrdem(Tree * raiz){
     cout << "\t|  Placa...: ""[" << raiz->info->placa<< "]";
-    cout << "\t|  Modelo..: ""[" << raiz->info->placa<< "]" "\t|   " << endl;
+    cout << "\t|  Modelo..: ""[" << raiz->info->modelo<< "]" "\t   " << endl;
     if(raiz->esquerdo != NULL){  //Diferente
         preOrdem(raiz->esquerdo);
     }
@@ -298,7 +298,7 @@ void imprime_arvore(Tree * raiz){
     if(arvore_vazia(raiz)){
         
         cout << endl;
-        cout << "  [      Veículo não encontrado      ]"<< endl;
+        cout << " \t\t\t [      Veículo não encontrado      ]"<< endl;
         cout << endl;        
     } else {
         raiz->altura = altura_binaria(raiz); 
