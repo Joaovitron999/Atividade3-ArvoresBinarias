@@ -1,10 +1,8 @@
 #include <cstdlib>
 #include <iostream>
-
 #include "lista.h"
 
 using namespace std;
-
 
 /*Função para descobrir a maior altura*/
 int maior_altura(int a, int b){
@@ -130,7 +128,7 @@ Tree *  inserir_AVL(Tree** raiz, no * novo){
         (*raiz)->altura = 0;
         return (*raiz);
     }
-    else{//Inserção à esquerda ou direita
+    else{ //Inserção à esquerda ou direita
         no * aux = (*raiz)->info;
         if( novo->placa < aux->placa){
             (*raiz)->esquerdo = inserir_AVL(&(*raiz)->esquerdo, novo);
@@ -206,7 +204,7 @@ bool procura (string busca, no * pont){
       busca[i] = toupper(busca[i]);
   }
 
-  // Dados veículo
+  //Dados veículo, comparando suas strings e deixando tudo em maiúsculo
   for(int i = 0; i < pont->marca.length(); i++){
       pont->marca[i] = toupper(busca[i]);
   }
@@ -239,6 +237,9 @@ bool procura (string busca, no * pont){
   }
   for(int i = 0; i < pont->modelo.length(); i++){
         pont->modelo[i] = toupper(pont->modelo[i]);
+  }
+  for(int i = 0; i < pont->placa.length(); i++){
+        pont->placa[i] = toupper(pont->placa[i]);
   }
 
 

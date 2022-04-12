@@ -25,18 +25,13 @@ tLista * lista1;
 
 int main(int argc, char** argv) {
   setlocale(LC_ALL, "Portuguese");
-    /*Variável para guardar o valor da opção a ser requisitada*/
+    // Variável que guarda o valor da resposta do usuário
     int opcao;
-            
-    /*Variável para saber as opções de dados1 de busca dos veículos
-     Também irá ser usada para saber a placa do veículo que o usuário 
-     * deseja remover*/
+  
+    // Variável para saber as opções dos primeiros parâmetros de busca dos veículos. Também irá ser usada para saber a placa do veículo que o usuário deseja remover.
     string elemento1, elemento2;
     
-    /*Variável que servirá para constar se já foi feita uma busca
-     se =0 significa que a Arvore está vazia, ou seja, não foi armazenado
-     nenhum dado de busca nesses lugares, caso seja =1 significa que precisamos
-     deletar o conteúdo que está na Arvore*/
+     // Variável que confirma se já foi feita uma busca. Se resultar =0 significa que a Arvore está vazia, logo nenhum dado de busca foi armazenado nesses lugares, caso seja =1 significa que precisamos deletar o conteúdo que está na Arvore
     int existeArv = 0, existeAVL = 0;
     
     /*Variável que servirá para averiguar se o arquivo existe ou não*/
@@ -94,7 +89,7 @@ int main(int argc, char** argv) {
             cout << "  |   Inserir veículo             [1] |" << endl;
             cout << "  |   Remover veículo             [2] |" << endl;
             cout << "  |   Buscar                      [3] |" << endl;
-            cout << "  |   Relatótio                   [4] |" << endl;
+            cout << "  |   Relatório                   [4] |" << endl;
             cout << "  |   RELATÓRIO DAS ÁRVORES       [5] |" << endl;
             cout << "  |   SAIR                        [0] |" << endl;
             cout << "  -------------------------------------" << endl;
@@ -210,7 +205,7 @@ int main(int argc, char** argv) {
                 cout << endl;
                 cout << " Digite a opção de armazenamento desejada: ";
                 cin >> opcao;
-                while (opcao <= 0 || opcao > 2){
+                if (opcao <= 0 || opcao > 2 &&){
                     break;
                 }
                 /*Desalocando a ÁRVORE BINÁRIA para realização de nova busca*/
@@ -228,10 +223,10 @@ int main(int argc, char** argv) {
                     cout <<endl;
                     cout << " Exemplo: Se deseja buscar por carros da cor Preto a câmbio Manual digite: 'Preto' no primeiro critério e 'Manual' no segundo critério" << endl;
                     cout <<endl;
-                    cout << " Digite o primeiro critério de busca desejada: ";
+                    cout << " Digite o PRIMEIRO critério de busca desejada: ";
                     cin >> elemento1; 
                     cout << endl;
-                    cout << " Digite o segundo critério de busca desejada: ";
+                    cout << " Digite o SEGUNDO critério de busca desejada: ";
                     cin >> elemento2;
                     
                     /*Chamando a função busca*/
