@@ -3,7 +3,6 @@
 
 using namespace std;
 
-
 //Estrutura da Lista
 typedef struct {
 	int tam;              //Variável para medir a quantidade de elementos
@@ -16,6 +15,15 @@ typedef struct tree{
     struct tree *esquerdo, *direito; //Ponteiro para o próximo elemento a esquerda/direita
     int altura;                     //Variável para medir a altura da árvore
 } Tree;
+
+// Estrutura para guardar as informações dos veículos
+typedef struct no_ {
+        string modelo, marca, tipo, combustivel ,cambio, direcao, cor, placa; 
+        string ano, km, portas; 
+        string potenciaMotor;
+	struct no_ * prox;  // Ponteiro do próximo nó da lista encadeada
+} no;
+
 
 bool arvore_vazia(Tree * raiz);
 void inserir_binario(Tree** raiz, no * novo);

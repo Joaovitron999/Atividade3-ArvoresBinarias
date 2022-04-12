@@ -201,8 +201,8 @@ int main(int argc, char** argv) {
                 cout << endl;
                 cout << "\t[     Qual tipo de árvore usar?     ]" << endl;
                 cout << endl;
-                cout << "  |          1) Árvore Binária           |" << endl;
-                cout << "  |          2) Árvore AVL               |" << endl;
+                cout << "  |          [1] Árvore Binária           |" << endl;
+                cout << "  |          [2] Árvore AVL               |" << endl;
                 cout << endl;
                 cout << " Digite a opção de armazenamento desejada: ";
                 cin >> opcao2;
